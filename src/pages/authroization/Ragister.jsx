@@ -4,6 +4,7 @@ import { registerUser } from '@/store/auth-slice'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 const intitalState ={
   userName: '',
@@ -14,11 +15,18 @@ const AuthRagister = () => {
     const [formData, setFormatData] = useState(intitalState);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+   
 
     const onSubmit = (e)=>{
       e.preventDefault();
       dispatch(registerUser(formData)).then((data)=>{
-        if(data?.payload?.success) navigate('/auth/login');
+        if(data?.payload?.success){
+          toast.success(data?.payload?.message)
+          navigate('/auth/login');
+        }else{
+          toast.warning(data?.payload?.message)
+        }
+          
       })
     }
     // console.log(formData);
