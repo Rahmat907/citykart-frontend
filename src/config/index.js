@@ -1,4 +1,4 @@
-import { Component } from "lucide-react";
+
 
 export const registerFormControls=[
     {
@@ -45,3 +45,66 @@ export const loginFormControls=[
          
     }
 ]
+
+export const addProductElement = [
+  {
+    name: "title",
+    label: "Title",
+    placeholder: "Enter product title",
+    componentType: "input",
+    type: "text",
+  },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Enter product description",
+    componentType: "textarea",
+  },
+  {
+    name: "category",
+    label: "Category",
+    componentType: "select",
+    options: [
+      { label: "Men", id: "men" },
+      { label: "Women", id: "women" },
+      { label: "Kids", id: "kids" },
+      { label: "Accessories", id: "accessories" },
+      { label: "Footwear", id: "footwear" },
+    ],
+  },
+  {
+    name: "brand",
+    label: "Brand",
+    componentType: "select",
+    options: [
+      { label: "Nike", id: "nike" },
+      { label: "Adidas", id: "adidas" },
+      { label: "Puma", id: "puma" },
+      { label: "Levi's", id: "levis" },
+      { label: "Zara", id: "zara" },
+      { label: "H&M", id: "hm" },
+    ],
+  },
+  {
+    name: "price",
+    label: "Price",
+    placeholder: "Enter original price",
+    componentType: "input",
+    type: "number",
+  },
+  {
+    name: "salePrice",
+    label: "Sale Price",
+    placeholder: "Enter discounted price",
+    componentType: "input",
+    type: "number",
+  },
+  {
+    name: "totalStock",
+    label: "Total Stock",
+    placeholder: "Enter available stock",
+    componentType: "input",
+    type: "number",
+  },
+];
+
