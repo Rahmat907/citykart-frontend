@@ -8,6 +8,9 @@ import { toast } from "sonner";
 const UserCartItemsContent = ({ cartItems }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  console.log("insdie of usercartItems" , cartItems);
+  
   const handleCartItemDelete = (getCartitem) => {
     dispatch(
       deleteCartItems({ userId: user?.id, productId: getCartitem?.productId })

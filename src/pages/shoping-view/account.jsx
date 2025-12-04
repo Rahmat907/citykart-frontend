@@ -2,7 +2,7 @@ import React from "react";
 import accImage from "../../assets/image/aimg.webp";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Address from "@/components/shoping-view-c/address";
-import Orders from "@/components/shoping-view-c/Orders";
+import ShoppingOrders from "@/components/shoping-view-c/Orders";
 
 const ShopingAccount = () => {
   return (
@@ -21,7 +21,7 @@ const ShopingAccount = () => {
             <TabsTrigger value= "address">Address</TabsTrigger>
           </TabsList>
           <TabsContent value = "orders">
-            <Orders/>
+            <ShoppingOrders/>
           </TabsContent>
           <TabsContent value = "address">
             <Address/>

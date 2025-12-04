@@ -60,7 +60,7 @@ const HeaderRightContent = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCartItems(user?.id));
+    dispatch(fetchCartItems({userId : user?.id}));
   }, [dispatch]);
 
   return (

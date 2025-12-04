@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
+ import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
 import { Button } from '../ui/button'
 import { Dialog } from '../ui/dialog'
-import ShopingOrderDetails from './ShopingOrderDetails'
-
-const ShoppingOrders = () => {
-  const [openDetailsDialog,setopenDetailsDialog] = useState(false)
-  return (
-    <Card>
+import AdminOrderDetails from './OrderDetails'
+ 
+ const AdminOrders = () => {
+    const[openDetailsDialog,setopenDetailsDialog] = useState(false)
+   return (
+     <Card>
       <CardHeader>
         <CardTitle>
-          Order History
+          All Orders
         </CardTitle>
       </CardHeader>
-      <CardContent>
+       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
@@ -33,8 +33,8 @@ const ShoppingOrders = () => {
               <TableCell>{'\u20B9'}7000</TableCell>
               <TableCell>
                 <Dialog open={openDetailsDialog} onOpenChange={setopenDetailsDialog} >
-                <Button onClick= {()=> setopenDetailsDialog(true)} >View Details</Button>
-                <ShopingOrderDetails />
+                <Button onClick={()=>setopenDetailsDialog(true)} >View Details</Button>
+                <AdminOrderDetails/>
                 </Dialog>
               </TableCell>
             </TableRow>
@@ -42,7 +42,8 @@ const ShoppingOrders = () => {
         </Table>
       </CardContent>
     </Card>
-  )
-}
-
-export default ShoppingOrders
+   )
+ }
+ 
+ export default AdminOrders
+ 

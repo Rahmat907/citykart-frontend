@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const UserCartWrapper = ({ cartItems , setopenCartSheet}) => {
   const navigate = useNavigate()
+  
   const totalCartAmount =
     cartItems && cartItems.length > 0
       ? cartItems.reduce((sum, currentItem) => {
