@@ -9,7 +9,7 @@ const UserCartItemsContent = ({ cartItems }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  console.log("insdie of usercartItems" , cartItems);
+  // console.log("insdie of usercartItems" , cartItems);
   
   const handleCartItemDelete = (getCartitem) => {
     dispatch(

@@ -16,17 +16,17 @@ const Authlogin = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Work or not bro");
+    // console.log("Work or not bro");
 
     dispatch(loginUser(formData)).then((data) => {
       if (data?.payload?.success) {
         toast.success(data?.payload?.message);
-        console.log("Chal ja bhai");
+        // console.log("Chal ja bhai");
         
       } else {
         toast.error(data?.payload?.message);
       }
-      console.log(data);
+      // console.log(data);
     });
   };
   return (
