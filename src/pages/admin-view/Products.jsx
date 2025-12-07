@@ -73,14 +73,13 @@ const AdminProduct = () => {
         });
   };
   // console.log(formData);
-  const handledelete = (getCurrentId)=>{
-      dispatch(deleteProduct(getCurrentId)).then((data)=>{
-        if(data?.payload?.success){
-          dispatch(fetchAllProducts())
-        } 
-      })
-      
-  }
+  const handledelete = (getCurrentId) => {
+    dispatch(deleteProduct(getCurrentId)).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(fetchAllProducts());
+      }
+    });
+  };
 
   const isFormValid = () => {
     return Object.keys(formData)
@@ -113,7 +112,7 @@ const AdminProduct = () => {
                 setcurrentEditedId={setcurrentEditedId}
                 setopenCreateProductDialog={setopenCreateProductDialog}
                 setFormData={setFormData}
-                handledelete= {handledelete} 
+                handledelete={handledelete}
               />
             ))
           : null}
@@ -125,7 +124,7 @@ const AdminProduct = () => {
           setopenCreateProductDialog(false);
           setcurrentEditedId(null);
           setFormData(initialFormData);
-          console.log("After close yeah chala ke nhi");
+          // console.log("After close yeah chala ke nhi");
         }}
       >
         <SheetContent
@@ -156,7 +155,7 @@ const AdminProduct = () => {
                 onSubmit={onSubmit}
                 formControls={addProductElement}
                 buttonText={currentEditedId !== null ? "Edit" : "Add"}
-                isButtonDisabel = {!isFormValid()}
+                isButtonDisabel={!isFormValid()}
               />
             </div>
           </SheetHeader>

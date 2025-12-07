@@ -50,6 +50,7 @@ const ShopingListing = () => {
   const [openDetailsDialog, setopenDetailsDialog] = useState(false);
   // const {toast} =  useToast
 
+  const categorySearchParams = SearchParams.get("category");
   const handleSort = (value) => {
     console.log(value);
     setSort(value);
@@ -88,19 +89,18 @@ const ShopingListing = () => {
     dispatch(
       addToCart({ userId: user?.id, productId: getCurrentId, quantity: 1 })
     ).then((data) => {
-      if (data?.payload?.success){
+      if (data?.payload?.success) {
         dispatch(fetchCartItems({ userId: user?.id }));
-        
+
         toast.success("Product added to cart successfully");
       }
-        
     });
   };
 
   useEffect(() => {
     setSort("priceLowToHigh");
     setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
-  }, []);
+  }, [categorySearchParams]);
 
   useEffect(() => {
     if (filters && Object.keys(filters).length > 0) {

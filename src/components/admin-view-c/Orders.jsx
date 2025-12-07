@@ -68,11 +68,11 @@ const AdminOrders = () => {
                       ) : orderItem?.orderStatus === "pending" ? (
                         <Badge className="bg-black">Pending</Badge>
                       ) : orderItem?.orderStatus === "inprogress" ? (
-                        <Badge className='bg-blue-500'>In Progress</Badge>
+                        <Badge className="bg-blue-500">In Progress</Badge>
                       ) : orderItem?.orderStatus === "inshipping" ? (
-                        <Badge className='bg-gray-500'>In Shipping</Badge>
+                        <Badge className="bg-gray-500">In Shipping</Badge>
                       ) : orderItem?.orderStatus === "delivered" ? (
-                        <Badge  className='bg-green-500'>Delivered</Badge>
+                        <Badge className="bg-green-500">Delivered</Badge>
                       ) : (
                         <Badge variant="destructive">Rejected</Badge>
                       )}

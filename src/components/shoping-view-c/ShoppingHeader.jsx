@@ -1,6 +1,11 @@
 import { HousePlug, LogOut, Menu, ShoppingCart, UserCog } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import logo from "../../assets/image/logo.jpg";
@@ -22,16 +27,20 @@ import { Label } from "../ui/label";
 
 const MenuItems = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const handleNavigate = (getCurrentItem) => {
     sessionStorage.removeItem("filters");
     const currentFilter =
-      getCurrentItem.id !== "home"
+      getCurrentItem.id !== "home" && getCurrentItem.id !== "products"
         ? {
             category: [getCurrentItem.id],
           }
         : null;
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
-    navigate(getCurrentItem.path);
+    location.pathname.includes("listing") && currentFilter !== null
+      ? setSearchParams(new URLSearchParams(`?category=${getCurrentItem.id}`))
+      : navigate(getCurrentItem.path);
   };
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
@@ -60,7 +69,7 @@ const HeaderRightContent = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCartItems({userId : user?.id}));
+    dispatch(fetchCartItems({ userId: user?.id }));
   }, [dispatch]);
 
   return (
@@ -75,7 +84,7 @@ const HeaderRightContent = () => {
           <span className="sr-only">User Cart</span>
         </Button>
         <UserCartWrapper
-        setopenCartSheet={setopenCartSheet}
+          setopenCartSheet={setopenCartSheet}
           cartItems={
             cartItems && cartItems.items && cartItems.items.length > 0
               ? cartItems.items

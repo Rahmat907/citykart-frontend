@@ -22,7 +22,6 @@ const Authlogin = () => {
       if (data?.payload?.success) {
         toast.success(data?.payload?.message);
         // console.log("Chal ja bhai");
-        
       } else {
         toast.error(data?.payload?.message);
       }

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const UnAuthpage = () => {
   return (
     <div>
-    <h1>You dont have access this pages</h1>
+      <h1>You dont have access this pages</h1>
     </div>
-  )
-}
+  );
+};
 
-export default UnAuthpage
+export default UnAuthpage;

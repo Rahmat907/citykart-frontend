@@ -11,8 +11,8 @@ const ShopingCheckout = () => {
   const { user } = useSelector((state) => state.auth);
   const { approvalURL } = useSelector((state) => state.shopOrder);
   const [currentSelectedAddress, setcurrentSelectedAddress] = useState(null);
-  const [isPaymentStart,setisPaymentStart] = useState(false)
-  const dispatch = useDispatch()
+  const [isPaymentStart, setisPaymentStart] = useState(false);
+  const dispatch = useDispatch();
   // console.log("addres info", currentSelectedAddress);
   // console.log(cartItems);
   const totalCartAmount =
@@ -29,14 +29,14 @@ const ShopingCheckout = () => {
       : 0;
 
   const handleInitiatePaypalPayment = () => {
-    if(cartItems.items.length === 0){
-      toast.warning('Your Cart is Empty. Please add items to proceed')
+    if (cartItems.items.length === 0) {
+      toast.warning("Your Cart is Empty. Please add items to proceed");
       return;
     }
 
-    if(currentSelectedAddress === null){
-      toast.warning('Please select one address to proceed')
-      return
+    if (currentSelectedAddress === null) {
+      toast.warning("Please select one address to proceed");
+      return;
     }
     const orderData = {
       userId: user?.id,
@@ -51,13 +51,13 @@ const ShopingCheckout = () => {
             : singlecartitem?.price,
         quantity: singlecartitem?.quantity,
       })),
-      addressInfo:{
-        addressId : currentSelectedAddress?._id,
-        address : currentSelectedAddress?.address,
-        city : currentSelectedAddress?.city,
-        pincode : currentSelectedAddress?.pincode,
-        phone : currentSelectedAddress?.phone, 
-        notes : currentSelectedAddress?.notes, 
+      addressInfo: {
+        addressId: currentSelectedAddress?._id,
+        address: currentSelectedAddress?.address,
+        city: currentSelectedAddress?.city,
+        pincode: currentSelectedAddress?.pincode,
+        phone: currentSelectedAddress?.phone,
+        notes: currentSelectedAddress?.notes,
       },
       orderStatus: "pending",
       paymentMethod: "paypal",
@@ -67,28 +67,23 @@ const ShopingCheckout = () => {
       orderUpdateData: new Date(),
       paymentId: "",
       payerId: "",
-
     };
     // console.log(orderData);
-    dispatch(createNewOrder(orderData)).then((data)=>{
+    dispatch(createNewOrder(orderData)).then((data) => {
       // console.log('success hua', data);
-      if(data?.payload?.success){
-          setisPaymentStart(true)
-      }else{
-          setisPaymentStart(false)
+      if (data?.payload?.success) {
+        setisPaymentStart(true);
+      } else {
+        setisPaymentStart(false);
       }
-      
-    })
+    });
   };
 
-  useEffect(()=>{
-    if(approvalURL){
-    window.location.href = approvalURL
-  }
-
-  },[approvalURL])
-  
-  
+  useEffect(() => {
+    if (approvalURL) {
+      window.location.href = approvalURL;
+    }
+  }, [approvalURL]);
 
   return (
     <div className="flex flex-col">

@@ -113,7 +113,7 @@ const Address = ({ setcurrentSelectedAddress }) => {
                 addressInfo={singleAddressItems}
                 handleDelteAddress={handleDelteAddress}
                 handleEditAddress={handleEditAddress}
-                setcurrentSelectedAddress = {setcurrentSelectedAddress}
+                setcurrentSelectedAddress={setcurrentSelectedAddress}
               />
             ))
           : null}

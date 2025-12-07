@@ -10,7 +10,7 @@ const UserCartItemsContent = ({ cartItems }) => {
   const dispatch = useDispatch();
 
   // console.log("insdie of usercartItems" , cartItems);
-  
+
   const handleCartItemDelete = (getCartitem) => {
     dispatch(
       deleteCartItems({ userId: user?.id, productId: getCartitem?.productId })
