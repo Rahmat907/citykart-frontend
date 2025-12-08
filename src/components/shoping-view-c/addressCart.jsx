@@ -8,10 +8,13 @@ const AddressCart = ({
   handleDelteAddress,
   handleEditAddress,
   setcurrentSelectedAddress,
+  selectId
 }) => {
   return (
-    <Card onClick={() => setcurrentSelectedAddress(addressInfo)}>
-      <CardContent className="grid p-4 gap-4">
+    <Card onClick={() => setcurrentSelectedAddress(addressInfo)}
+      className = {`cursor-pointer border-red-700 ${selectId?._id === addressInfo._id ? 'border-red-900 border-4' : 'border-black'}`} 
+    >
+      <CardContent className= 'grid p-4 gap-4'>
         <Label>Address: {addressInfo?.address}</Label>
         <Label>City : {addressInfo?.city}</Label>
         <Label>Pincode: {addressInfo?.pincode}</Label>
